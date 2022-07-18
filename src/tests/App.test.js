@@ -13,7 +13,7 @@ describe('testando o componente App', () => {
   test(`se o topo da aplicação contém um conjunto
   fixo de links de navegação`, () => {
     ['Home', 'Favorite Pokémons', 'About'].forEach((elem) => {
-      expect(screen.getByRole('link', { name: elem }));
+      expect(screen.getByRole('link', { name: elem })).toBeInTheDocument();
     });
   });
 });
