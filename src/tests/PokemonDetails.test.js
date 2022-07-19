@@ -24,6 +24,10 @@ function getLink(linkName) {
   return screen.queryByRole('link', { name: linkName });
 }
 
+function getCheckboxInput() {
+  return screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
+}
+
 function checkIsFavorite(bool, testId) {
   if (bool) {
     expect(screen.getAllByTestId(testId)).toHaveLength(1);
@@ -33,7 +37,7 @@ function checkIsFavorite(bool, testId) {
 }
 
 function toggleFavoritePokemon() {
-  userEvent.click(screen.getByRole('checkbox', { name: 'Pokémon favoritado?' }));
+  userEvent.click(getCheckboxInput());
   return screen.queryByRole('img', { name: `${name} is marked as favorite` });
 }
 
@@ -86,8 +90,7 @@ describe('Testando o componente PokemonDetails', () => {
 
   describe('Testando a opção de selecionar o pokemon como favorito', () => {
     test('se possui um checkbox que permite favoritar o pokemon', () => {
-      expect(screen.getByRole('checkbox', { name: 'Pokémon favoritado?' }))
-        .toBeInTheDocument();
+      expect(getCheckboxInput()).toBeInTheDocument();
     });
 
     test(`se cliques alternados no checkbox adiciona e remove, respectivamente,
