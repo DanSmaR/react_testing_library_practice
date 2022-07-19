@@ -14,7 +14,7 @@ function getPokemonData({
     summary,
   };
 }
-
+// only works w/ the first pokemon in the array
 const { name, foundAt, summary } = getPokemonData(pokemons[0]);
 
 const nameTestId = 'pokemon-name';
